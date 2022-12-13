@@ -1,5 +1,5 @@
 name: flutter_camera_app
-description: A new Flutter project.
+description: Entertainment And Chill
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
@@ -31,6 +31,15 @@ dev_dependencies:
   hive_generator: 2.0.0
   build_runner: 2.3.2
   flutter_lints: ^2.0.1
+  flutter_launcher_icons: ^0.11.0
+
+flutter_icons:
+  android: true
+  ios: true
+  min_sdk_android: 21
+  image_path: "assets/images/global/app_icon.png"
+  adaptive_icon_foreground: "assets/images/global/app_icon_512.png"
+  remove_alpha_ios: true
 
 flutter:
 
