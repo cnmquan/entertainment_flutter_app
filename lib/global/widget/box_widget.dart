@@ -7,8 +7,15 @@ class BoxWidget extends StatelessWidget {
   final double? height;
   final String text;
   final VoidCallback? onPress;
-  const BoxWidget(
-      {super.key, this.width, this.height, required this.text, this.onPress});
+  final String assetPath;
+  const BoxWidget({
+    super.key,
+    this.width,
+    this.height,
+    required this.text,
+    required this.assetPath,
+    this.onPress,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +31,10 @@ class BoxWidget extends StatelessWidget {
               width: width,
               height: height,
               decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(assetPath),
+                  fit: BoxFit.cover,
+                ),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black.withOpacity(0.3),

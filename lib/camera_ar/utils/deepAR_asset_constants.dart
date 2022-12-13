@@ -2,7 +2,7 @@ import 'package:flutter_camera_app/camera_ar/model/ar_filter_model.dart';
 
 class DeepArEffectConstant {
   /// Asset Effect Path
-  static const String _assetEffectsPath = 'assets/ar/effects';
+  static const String _assetEffectsPath = 'assets/effects/ar';
 
   static const String burningEffect =
       '$_assetEffectsPath/burning_effect.deepar';
@@ -36,7 +36,7 @@ class DeepArEffectConstant {
 
 class DeepArImageConstant {
   /// Asset Image Path
-  static const String _assetImagesPath = 'assets/ar/images';
+  static const String _assetImagesPath = 'assets/images/ar';
 
   static const String burningImage = '$_assetImagesPath/burning_effect.png';
   static const String elephantTrunkImage =
