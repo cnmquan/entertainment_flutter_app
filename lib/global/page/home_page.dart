@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_camera_app/2048/page/game_2048_page.dart';
 import 'package:flutter_camera_app/dino_run/page/dino_home_page.dart';
 import 'package:flutter_camera_app/global/widget.dart';
 import 'package:flutter_camera_app/utils/constants/global_constants.dart';
@@ -46,7 +47,19 @@ class HomePage extends StatelessWidget {
                       builder: (context) => const DinoHomePage()))
                 },
               ),
-            )
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: BoxWidget(
+                assetPath: GlobalImageManager.game2048Asset,
+                text: GlobalConstants.game2048,
+                height: 240,
+                onPress: () => {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const Game2048HomePage()))
+                },
+              ),
+            ),
           ],
         ),
       ),

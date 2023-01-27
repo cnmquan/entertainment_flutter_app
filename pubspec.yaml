@@ -61,3 +61,6 @@ flutter:
     - family: Audiowide
       fonts:
         - asset: assets/fonts/dino/Audiowide-Regular.ttf
+    - family: StarJedi
+      fonts:
+        - asset: assets/fonts/2048/starjedi.ttf
