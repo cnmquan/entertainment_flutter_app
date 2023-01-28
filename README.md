@@ -1,16 +1,8 @@
-# flutter_camera_app
+##Import File Deepar.aar
 
-A new Flutter project.
+###B1 Truy cập vào đường dẫn bên dưới ở Folder
+%LOCALAPPDATA%\Pub\Cache\hosted\pub.dartlang.org\deepar_flutter-0.0.3\android
+hoặc
+%LOCALAPPDATA%\\Pub\Cache\hosted\pub.dev\deepar_flutter-0.0.3\android
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+###B2 Copy folder libs (có file deepar.arr) trong thư mục này vào đường dẫn ở trên để đảm bảo chạy được DeepAR
