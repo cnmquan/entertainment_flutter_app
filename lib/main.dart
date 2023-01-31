@@ -5,6 +5,8 @@ import 'package:flutter_camera_app/utils/function_manager.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:provider/provider.dart';
 
+import 'spacescape/model.dart' as SpacescapeModel;
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Provider.debugCheckInvalidValueType = null;
@@ -27,18 +29,49 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'E&C',
-      home: AnimatedSplashScreen(
-        splash: const Icon(
-          Icons.home,
-          color: Colors.white,
+    return MultiProvider(
+      providers: [
+        FutureProvider<SpacescapeModel.PlayerData>(
+          create: (BuildContext context) =>
+              GlobalFunctionManager.getSpacescapePlayerData(),
+          initialData: SpacescapeModel.PlayerData.fromMap(
+              SpacescapeModel.PlayerData.defaultData),
         ),
-        splashIconSize: double.infinity,
-        backgroundColor: Colors.black,
-        splashTransition: SplashTransition.scaleTransition,
-        nextScreen: const HomePage(),
+        FutureProvider<SpacescapeModel.Settings>(
+          create: (BuildContext context) =>
+              GlobalFunctionManager.getSpacescapeSettings(),
+          initialData: SpacescapeModel.Settings(
+              soundEffects: false, backgroundMusic: false),
+        ),
+      ],
+      builder: (context, child) {
+        // We use .value constructor here because the required objects
+        // are already created by upstream FutureProviders.
+        return MultiProvider(
+          providers: [
+            ChangeNotifierProvider<SpacescapeModel.PlayerData>.value(
+              value: Provider.of<SpacescapeModel.PlayerData>(context),
+            ),
+            ChangeNotifierProvider<SpacescapeModel.Settings>.value(
+              value: Provider.of<SpacescapeModel.Settings>(context),
+            ),
+          ],
+          child: child,
+        );
+      },
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'E&C',
+        home: AnimatedSplashScreen(
+          splash: const Icon(
+            Icons.home,
+            color: Colors.white,
+          ),
+          splashIconSize: double.infinity,
+          backgroundColor: Colors.black,
+          splashTransition: SplashTransition.scaleTransition,
+          nextScreen: const HomePage(),
+        ),
       ),
     );
   }
