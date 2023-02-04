@@ -10,32 +10,29 @@ class SelectionFilterWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<DeepArLogic>(builder: (context, provider, child) {
-      return ClipRRect(
-        borderRadius: BorderRadius.circular(20),
-        child: Material(
-          color: Colors.pinkAccent.withOpacity(0.4),
-          child: SizedBox(
-              width: double.infinity,
-              height: 150,
-              child: ListView.builder(
-                  itemCount: arFilterList.length,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    return SelectionCardWidget(
-                      assetName: arFilterList[index].assetName,
-                      name: arFilterList[index].name,
-                      selected: provider.filter?.id == index,
-                      onPress: () {
-                        if (provider.filter?.id == index) {
-                          provider.removeArFilter();
-                        } else {
-                          provider.chooseArFilter(arFilterList[index]);
-                        }
-                      },
-                    );
-                  })),
-        ),
-      );
+      return SizedBox(
+          width: double.infinity,
+          height: 160,
+          child: ListView.builder(
+              itemCount: arFilterList.length,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SelectionCardWidget(
+                    assetName: arFilterList[index].assetName,
+                    name: arFilterList[index].name,
+                    selected: provider.filter?.name == arFilterList[index].name,
+                    onPress: () {
+                      if (provider.filter?.name == arFilterList[index].name) {
+                        provider.removeArFilter();
+                      } else {
+                        provider.chooseArFilter(arFilterList[index]);
+                      }
+                    },
+                  ),
+                );
+              }));
     });
   }
 }

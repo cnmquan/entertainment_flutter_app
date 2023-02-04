@@ -213,22 +213,25 @@ class ArFilterConstant {
 }
 
 List<ArModel> arFilterList = [
-  ArFilterConstant.vikingHelmetFilter,
   ArFilterConstant.burningEffectFilter,
+  ArFilterConstant.galaxyBackgroundFilter,
+  ArFilterConstant.hopeFilter,
+  ArFilterConstant.heart8BitFilter,
+  ArFilterConstant.vikingHelmetFilter,
   ArFilterConstant.elephantTrunkFilter,
   ArFilterConstant.neonDevilHornsFilter,
   ArFilterConstant.emotionMeterFilter,
-  ArFilterConstant.emotionsExaggeratorFilter,
+];
+
+List<ArModel> arMaskedList = [
   ArFilterConstant.fireFilter,
-  ArFilterConstant.flowerFaceFilter,
-  ArFilterConstant.galaxyBackgroundFilter,
-  ArFilterConstant.hopeFilter,
-  ArFilterConstant.humanoidFilter,
-  ArFilterConstant.makeUpLookFilter,
   ArFilterConstant.splitViewLookFilter,
-  ArFilterConstant.heart8BitFilter,
+  ArFilterConstant.emotionsExaggeratorFilter,
   ArFilterConstant.pingPongFilter,
-  ArFilterConstant.snailFilter,
+  ArFilterConstant.makeUpLookFilter,
+  ArFilterConstant.emotionMeterFilter,
+  ArFilterConstant.flowerFaceFilter,
+  ArFilterConstant.humanoidFilter,
   ArFilterConstant.stalloneFilter,
   ArFilterConstant.vendettaMaskFilter,
 ];

@@ -12,4 +12,6 @@ class GlobalImageManager {
   static const String dinoRunAsset = '$_assetPath/dino_icon.png';
   static const String game2048Asset = '$_assetPath/2048_icon.png';
   static const String gameSpacescapeAsset = '$_assetPath/spacescape_icon.png';
+  static const String folderAsset = '$_assetPath/folder.jpg';
+  static const String filterAsset = '$_assetPath/filter.jpg';
 }

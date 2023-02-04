@@ -10,32 +10,29 @@ class SelectionMaskedWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<DeepArLogic>(builder: (context, provider, child) {
-      return ClipRRect(
-        borderRadius: BorderRadius.circular(20),
-        child: Material(
-          color: Colors.lightBlueAccent.withOpacity(0.4),
-          child: SizedBox(
-              width: double.infinity,
-              height: 150,
-              child: ListView.builder(
-                  itemCount: arFilterList.length,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    return SelectionCardWidget(
-                      assetName: arFilterList[index].assetName,
-                      name: arFilterList[index].name,
-                      selected: provider.masked?.id == index,
-                      onPress: () {
-                        if (provider.masked?.id == index) {
-                          provider.removeArMasked();
-                        } else {
-                          provider.chooseArMasked(arFilterList[index]);
-                        }
-                      },
-                    );
-                  })),
-        ),
-      );
+      return SizedBox(
+          width: double.infinity,
+          height: 150,
+          child: ListView.builder(
+              itemCount: arMaskedList.length,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SelectionCardWidget(
+                    assetName: arMaskedList[index].assetName,
+                    name: arMaskedList[index].name,
+                    selected: provider.masked?.name == arMaskedList[index].name,
+                    onPress: () {
+                      if (provider.masked?.name == arMaskedList[index].name) {
+                        provider.removeArMasked();
+                      } else {
+                        provider.chooseArMasked(arMaskedList[index]);
+                      }
+                    },
+                  ),
+                );
+              }));
     });
   }
 }
