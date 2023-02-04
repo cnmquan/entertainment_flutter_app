@@ -1,9 +1,10 @@
 import 'package:deepar_flutter/deepar_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_camera_app/camera_ar/page/preview_image_widget.dart';
 import 'package:flutter_camera_app/camera_ar/widget.dart';
-import 'package:open_file/open_file.dart';
 
 import '../../utils/constants/global_constants.dart';
+import '../page/preview_video_widget.dart';
 import '../page/store_image_page.dart';
 
 class CameraMainFunctionWidget extends StatefulWidget {
@@ -38,7 +39,13 @@ class _CameraMainFunctionWidgetState extends State<CameraMainFunctionWidget> {
                       });
                       if (widget.controller!.isRecording) {
                         widget.controller!.stopVideoRecording().then((file) {
-                          OpenFile.open(file.path);
+                          Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(builder: (context) {
+                            return PreviewVideoWidget(
+                              filePath: file.path,
+                              fromCamera: true,
+                            );
+                          }));
                         });
                       }
                     },
@@ -172,13 +179,27 @@ class _CameraMainFunctionWidgetState extends State<CameraMainFunctionWidget> {
               onTap: () async {
                 if (_isPhoto) {
                   widget.controller!.takeScreenshot().then((file) {
-                    OpenFile.open(file.path);
+                    Navigator.of(context)
+                        .pushReplacement(MaterialPageRoute(builder: (context) {
+                      return PreviewImageWidget(
+                        filePath: file.path,
+                        fromCamera: true,
+                      );
+                    }));
                   });
                 } else {
                   if (widget.controller!.isRecording) {
-                    widget.controller!.stopVideoRecording().then((file) {
-                      OpenFile.open(file.path);
-                    });
+                    widget.controller!.stopVideoRecording().then(
+                      (file) {
+                        Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(builder: (context) {
+                          return PreviewVideoWidget(
+                            filePath: file.path,
+                            fromCamera: true,
+                          );
+                        }));
+                      },
+                    );
                   } else {
                     await widget.controller!.startVideoRecording();
                   }

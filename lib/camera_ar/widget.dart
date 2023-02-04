@@ -8,3 +8,5 @@ export 'widget/camera_widget.dart';
 export 'widget/camera_main_function_widget.dart';
 export 'widget/effect_camera_widget.dart';
 export 'widget/effect_ar_widget.dart';
+export 'widget/video_thumbnail_widget.dart';
+export 'widget/image_thumbnail_widget.dart';
