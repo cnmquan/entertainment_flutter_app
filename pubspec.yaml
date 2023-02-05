@@ -28,6 +28,7 @@ dependencies:
   video_player: ^2.5.1
   share_plus: ^4.5.3
   cross_file: ^0.3.3+4
+  shared_preferences: ^2.0.17
 
 dev_dependencies:
   flutter_test:
@@ -58,6 +59,7 @@ flutter:
     - assets/images/dino/player/dinoGif/
     - assets/images/dino/player/dinoSprites/
     - assets/images/spacescape/
+    - assets/images/flappy_bird/
     - assets/audio/dino/
     - assets/audio/spacescape/
     - assets/effects/ar/
