@@ -8,7 +8,7 @@ part of 'spaceship_details.dart';
 
 class SpaceshipTypeAdapter extends TypeAdapter<SpaceshipType> {
   @override
-  final int typeId = 6;
+  final int typeId = 3;
 
   @override
   SpaceshipType read(BinaryReader reader) {

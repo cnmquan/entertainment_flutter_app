@@ -212,7 +212,9 @@ class _CameraMainFunctionWidgetState extends State<CameraMainFunctionWidget> {
                 child: Container(
                   width: 60,
                   height: 60,
-                  color: Colors.white,
+                  color: widget.controller!.isRecording
+                      ? Colors.red.shade300
+                      : Colors.white,
                 ),
               ),
             ),

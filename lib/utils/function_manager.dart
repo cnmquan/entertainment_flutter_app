@@ -1,9 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_camera_app/spacescape/models/settings.dart';
+import 'package:flutter_camera_app/two_zero_four_eight/model/board_adapter_model.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
 
-import '../dino_run/model.dart' as DinoRunModel;
+import '../dino_run/model.dart' as dinoModel;
 import '../spacescape/model.dart' as SpacescapeModel;
 
 class GlobalFunctionManager {
@@ -16,13 +17,12 @@ class GlobalFunctionManager {
       Hive.init(dir.path);
     }
 
-    Hive.registerAdapter<DinoRunModel.PlayerData>(
-        DinoRunModel.PlayerDataAdapter());
-    Hive.registerAdapter<DinoRunModel.SettingData>(
-        DinoRunModel.SettingDataAdapter());
+    Hive.registerAdapter<dinoModel.PlayerData>(dinoModel.PlayerDataAdapter());
+    Hive.registerAdapter<dinoModel.SettingData>(dinoModel.SettingDataAdapter());
     Hive.registerAdapter(SpacescapeModel.PlayerDataAdapter());
     Hive.registerAdapter(SpacescapeModel.SpaceshipTypeAdapter());
     Hive.registerAdapter(SpacescapeModel.SettingsAdapter());
+    Hive.registerAdapter(BoardAdapterModel());
   }
 
   /// This function reads the stored [PlayerData] from disk.

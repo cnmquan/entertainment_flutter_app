@@ -1,9 +1,9 @@
-import 'package:hive/hive.dart';
 import 'package:flutter/foundation.dart';
+import 'package:hive/hive.dart';
 
 part 'settings.g.dart';
 
-@HiveType(typeId: 2)
+@HiveType(typeId: 4)
 class Settings extends ChangeNotifier with HiveObjectMixin {
   static const String settingsBox = 'SettingsBox';
   static const String settingsKey = 'Settings';

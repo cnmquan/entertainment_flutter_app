@@ -113,7 +113,7 @@ class Spaceship {
 
 // This enum represents all the spaceship
 // types available in this game.
-@HiveType(typeId: 1)
+@HiveType(typeId: 3)
 enum SpaceshipType {
   @HiveField(0)
   canary,
