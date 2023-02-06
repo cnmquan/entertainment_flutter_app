@@ -14,34 +14,34 @@ class CameraWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(20),
-      child: SizedBox(
-        width: size.width * 0.8,
-        height: size.height * 0.72,
-        child: Material(
-          color: Colors.blue,
-          child: SingleChildScrollView(
-              physics: const NeverScrollableScrollPhysics(),
-              scrollDirection: Axis.horizontal,
-              child: Center(
-                child: SingleChildScrollView(
-                  physics: const NeverScrollableScrollPhysics(),
-                  scrollDirection: Axis.vertical,
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        width: size.width,
-                        height: size.height,
-                        child: AspectRatio(
-                            aspectRatio: 1 / _controller!.aspectRatio,
-                            child: DeepArPreview(_controller!)),
-                      ),
-                    ],
-                  ),
-                ),
-              )),
+      borderRadius: BorderRadius.circular(40),
+      child: Material(
+        color: Colors.transparent,
+        child: SizedBox(
+          width: size.width * 0.8,
+          height: size.height * 0.72,
+          child: DeepArPreview(_controller!),
         ),
       ),
+      // child: SingleChildScrollView(
+      //     scrollDirection: Axis.vertical,
+      //     child: Center(
+      //       child: SingleChildScrollView(
+      //         scrollDirection: Axis.horizontal,
+      //         child: Column(
+      //           children: [
+      //             SizedBox(
+      //               width: size.width,
+      //               height: size.height,
+      //               child: AspectRatio(
+      //                   aspectRatio: 1 / _controller!.aspectRatio,
+      //                   child: DeepArPreview(_controller!)),
+      //             ),
+      //           ],
+      //         ),
+      //       ),
+      //     )),
+      // ),
     );
   }
 }

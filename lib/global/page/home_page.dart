@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'package:flutter_camera_app/2048/page/game_2048_page.dart';
 import 'package:flutter_camera_app/dino_run/page/dino_home_page.dart';
+import 'package:flutter_camera_app/flappy_bird/flappy_bird_home_page.dart';
 import 'package:flutter_camera_app/global/widget.dart';
 import 'package:flutter_camera_app/spacescape/screens/spacescape_main_menu.dart';
 import 'package:flutter_camera_app/two_zero_four_eight/page/game_two_zero_four_eight_page.dart';
@@ -71,6 +72,18 @@ class HomePage extends StatelessWidget {
                 onPress: () => {
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => const SpacescapeMainMenu()))
+                },
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: BoxWidget(
+                assetPath: GlobalImageManager.gameFlappyBirdAsset,
+                text: GlobalConstants.flappyBirdGame,
+                height: 240,
+                onPress: () => {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const FlappyBirdHomePage()))
                 },
               ),
             ),
