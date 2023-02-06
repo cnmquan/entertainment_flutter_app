@@ -2,6 +2,7 @@ import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_camera_app/camera_ar/logic/ar_logic.dart';
 import 'package:flutter_camera_app/global/page/home_page.dart';
+import 'package:flutter_camera_app/two_zero_four_eight/logic/game_manager.dart';
 import 'package:flutter_camera_app/utils/file_manager/file_manager.dart';
 import 'package:flutter_camera_app/utils/function_manager.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';

@@ -1,5 +1,5 @@
-import 'package:hive/hive.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 
 import 'spaceship_details.dart';
 
@@ -7,7 +7,7 @@ part 'player_data.g.dart';
 
 // This class represents all the persistent data that we
 // might want to store for tracking player progress.
-@HiveType(typeId: 0)
+@HiveType(typeId: 2)
 class PlayerData extends ChangeNotifier with HiveObjectMixin {
   static const String playerDataBox = 'PlayerDataBox';
   static const String playerDataKey = 'PlayerData';
