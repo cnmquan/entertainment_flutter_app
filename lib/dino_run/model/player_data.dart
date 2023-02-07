@@ -3,18 +3,15 @@ import 'package:hive/hive.dart';
 
 part 'player_data.g.dart';
 
-const maxLives = 5;
-const minLives = 0;
-
 @HiveType(typeId: 0)
 class PlayerData extends ChangeNotifier with HiveObjectMixin {
   @HiveField(1)
   int highScore = 0;
 
-  int _lives = maxLives;
+  int _lives = 5;
   int get lives => _lives;
   set lives(int value) {
-    if (value <= maxLives && value >= minLives) {
+    if (value >= 0) {
       _lives = value;
       notifyListeners();
     }

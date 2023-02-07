@@ -3,13 +3,19 @@ import 'package:flame/game.dart';
 import 'package:flame/input.dart';
 import 'package:flame/parallax.dart';
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 
 import '../model.dart';
 import '../object.dart';
 import '../utils.dart';
 import '../widget.dart';
 
-class DinoGame extends FlameGame with TapDetector, HasCollisionDetection {
+class DinoGame extends FlameGame
+    with
+        TapDetector,
+        HasCollisionDetection,
+        HorizontalDragDetector,
+        VerticalDragDetector {
   late PlayerData playerData;
   late SettingData settingData;
   late Player _player;
@@ -54,7 +60,8 @@ class DinoGame extends FlameGame with TapDetector, HasCollisionDetection {
   /// This method add the already created [Dino]
   /// and [EnemyManager] to this game.
   void startGamePlay() {
-    _player = Player(images.fromCache(ImageManager.dinoTard), playerData);
+    _player = Player(
+        images.fromCache(playerImageList[settingData.form ?? 0]), playerData);
     _enemyManager = EnemyManager();
 
     add(_player);
@@ -75,7 +82,7 @@ class DinoGame extends FlameGame with TapDetector, HasCollisionDetection {
 
     // Reset player data to initial values.
     playerData.currentScore = 0;
-    playerData.lives = maxLives;
+    playerData.lives = 6 - (settingData.level ?? 1);
   }
 
   @override
@@ -92,13 +99,37 @@ class DinoGame extends FlameGame with TapDetector, HasCollisionDetection {
   }
 
   @override
-  void onTapDown(TapDownInfo info) {
-    // Make dino jump only when game is playing.
-    // When game is in playing state, only Hud will be the active overlay.
+  void onVerticalDragStart(DragStartInfo info) {
+    Logger().i('Call Drag Vertical Start');
     if (overlays.isActive(HudWidget.id)) {
       _player.jump();
     }
+    super.onVerticalDragStart(info);
+  }
 
+  @override
+  void onHorizontalDragStart(DragStartInfo info) {
+    Logger().i('Call Drag Horizontal Start');
+    if (overlays.isActive(HudWidget.id)) {
+      _player.sprint();
+    }
+    super.onHorizontalDragStart(info);
+  }
+
+  @override
+  void onHorizontalDragEnd(DragEndInfo info) {
+    Logger().i('Call Drag Horizontal End');
+    if (overlays.isActive(HudWidget.id)) {
+      _player.run();
+    }
+    super.onHorizontalDragEnd(info);
+  }
+
+  @override
+  void onTapDown(TapDownInfo info) {
+    if (overlays.isActive(HudWidget.id)) {
+      _player.kick();
+    }
     super.onTapDown(info);
   }
 

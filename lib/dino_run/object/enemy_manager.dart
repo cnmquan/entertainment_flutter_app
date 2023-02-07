@@ -17,8 +17,15 @@ class EnemyManager extends Component with HasGameRef<DinoGame> {
   // Timer to decide when to spawn next enemy.
   final Timer _timer = Timer(2, repeat: true);
 
+  int level = 1;
+
   EnemyManager() {
-    _timer.onTick = spawnRandomEnemy;
+    _timer.onTick = () {
+      spawnRandomEnemy.call();
+      if (level > 1) {
+        spawnRandomEnemy.call();
+      }
+    };
   }
 
   void spawnRandomEnemy() {
@@ -30,7 +37,7 @@ class EnemyManager extends Component with HasGameRef<DinoGame> {
     // Help in setting all enemies on ground.
     enemy.anchor = Anchor.bottomLeft;
     enemy.position = Vector2(
-      gameRef.size.x + 32,
+      enemyData.isReverse ? 0 : (gameRef.size.x + 32),
       gameRef.size.y - 24,
     );
 
@@ -48,6 +55,7 @@ class EnemyManager extends Component with HasGameRef<DinoGame> {
 
   @override
   void onMount() {
+    level = gameRef.settingData.level ?? 1;
     if (isMounted) {
       removeFromParent();
     }
@@ -56,30 +64,151 @@ class EnemyManager extends Component with HasGameRef<DinoGame> {
     if (_data.isEmpty) {
       // As soon as this component is mounted, initialize all the data.
       _data.addAll([
-        EnemyData(
-          image: gameRef.images.fromCache(ImageManager.enemyAngryPig),
-          nFrames: 16,
-          stepTime: 0.1,
-          textureSize: Vector2(36, 30),
-          speedX: 80,
-          canFly: false,
-        ),
-        EnemyData(
-          image: gameRef.images.fromCache(ImageManager.enemyBat),
-          nFrames: 7,
-          stepTime: 0.1,
-          textureSize: Vector2(46, 30),
-          speedX: 100,
-          canFly: true,
-        ),
-        EnemyData(
-          image: gameRef.images.fromCache(ImageManager.enemyRino),
-          nFrames: 6,
-          stepTime: 0.09,
-          textureSize: Vector2(52, 34),
-          speedX: 150,
-          canFly: false,
-        ),
+        if (level > 0) ...[
+          EnemyData(
+            image: gameRef.images.fromCache(ImageManager.enemyAngryPig),
+            nFrames: 16,
+            stepTime: 0.1,
+            textureSize: Vector2(36, 30),
+            speedX: 80 + (level - 1) * 10,
+            canFly: false,
+            canKick: level < 3,
+          ),
+          EnemyData(
+            image: gameRef.images.fromCache(ImageManager.enemyBat),
+            nFrames: 7,
+            stepTime: 0.1,
+            textureSize: Vector2(46, 30),
+            speedX: 100 + (level - 1) * 20,
+            canFly: true,
+            canKick: level < 3,
+          ),
+          EnemyData(
+            image: gameRef.images.fromCache(ImageManager.enemyRino),
+            nFrames: 6,
+            stepTime: 0.09,
+            textureSize: Vector2(52, 34),
+            speedX: 150 + (level - 1) * 20,
+            canFly: false,
+            canKick: level < 3,
+          ),
+          EnemyData(
+            image: gameRef.images.fromCache(ImageManager.enemyChicken),
+            nFrames: 14,
+            stepTime: 0.1,
+            textureSize: Vector2(32, 34),
+            speedX: 100 + (level - 1) * 20,
+            canFly: false,
+            canKick: level < 3,
+          ),
+          EnemyData(
+            image: gameRef.images.fromCache(ImageManager.enemySnail),
+            nFrames: 10,
+            stepTime: 0.12,
+            textureSize: Vector2(38, 24),
+            speedX: 50 + (level - 1) * 10,
+            canFly: false,
+            canKick: level < 3,
+          ),
+        ],
+        if (level > 1) ...[
+          EnemyData(
+            image: gameRef.images.fromCache(ImageManager.enemyPinkMan),
+            nFrames: 12,
+            stepTime: 0.08,
+            textureSize: Vector2(32, 32),
+            speedX: 180 + (level - 1) * 10,
+            canFly: false,
+            canKick: level < 2,
+            isReverse: true,
+          ),
+          EnemyData(
+            image: gameRef.images.fromCache(ImageManager.enemyVirtualGuy),
+            nFrames: 12,
+            stepTime: 0.08,
+            textureSize: Vector2(32, 32),
+            speedX: 160 + (level - 1) * 10,
+            canFly: false,
+            canKick: level < 2,
+            isReverse: true,
+          ),
+          EnemyData(
+            image: gameRef.images.fromCache(ImageManager.enemyBird),
+            nFrames: 9,
+            stepTime: 0.1,
+            textureSize: Vector2(32, 32),
+            speedX: 100 + (level - 1) * 20,
+            canFly: true,
+            canKick: level < 3,
+          ),
+          EnemyData(
+            image: gameRef.images.fromCache(ImageManager.enemyBunny),
+            nFrames: 12,
+            stepTime: 0.08,
+            textureSize: Vector2(34, 44),
+            speedX: 140 + (level - 1) * 20,
+            canFly: false,
+            canKick: level < 3,
+          ),
+          EnemyData(
+            image: gameRef.images.fromCache(ImageManager.enemyRandish),
+            nFrames: 12,
+            stepTime: 0.12,
+            textureSize: Vector2(30, 38),
+            speedX: 60 + (level - 1) * 20,
+            canFly: false,
+            canKick: level < 3,
+          ),
+        ],
+        if (level > 2) ...[
+          EnemyData(
+            image: gameRef.images.fromCache(ImageManager.enemyMaskedDude),
+            nFrames: 12,
+            stepTime: 0.12,
+            textureSize: Vector2(32, 32),
+            speedX: 100 + (level - 1) * 10,
+            canFly: false,
+            canKick: level < 2,
+            isReverse: true,
+          ),
+          EnemyData(
+            image: gameRef.images.fromCache(ImageManager.enemyNinjaFrog),
+            nFrames: 12,
+            stepTime: 0.06,
+            textureSize: Vector2(32, 32),
+            speedX: 180 + (level - 1) * 10,
+            canFly: false,
+            canKick: level < 2,
+            isReverse: true,
+          ),
+          EnemyData(
+            image: gameRef.images.fromCache(ImageManager.enemyGhost),
+            nFrames: 10,
+            stepTime: 0.12,
+            textureSize: Vector2(44, 30),
+            speedX: 60 + (level - 1) * 20,
+            canFly: true,
+            canKick: level < 3,
+          ),
+          EnemyData(
+            image: gameRef.images.fromCache(ImageManager.enemySlime),
+            nFrames: 10,
+            stepTime: 0.12,
+            textureSize: Vector2(44, 30),
+            speedX: 40 + (level - 1) * 10,
+            canFly: false,
+            canKick: level < 3,
+          ),
+          EnemyData(
+            image: gameRef.images.fromCache(ImageManager.enemyTrunk),
+            nFrames: 14,
+            stepTime: 0.1,
+            textureSize: Vector2(64, 32),
+            speedX: 60 + (level - 1) * 20,
+            canFly: false,
+            canKick: level < 3,
+          ),
+        ]
       ]);
     }
     _timer.start();

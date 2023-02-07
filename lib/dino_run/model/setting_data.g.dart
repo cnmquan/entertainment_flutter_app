@@ -18,17 +18,23 @@ class SettingDataAdapter extends TypeAdapter<SettingData> {
     };
     return SettingData()
       .._bgm = fields[0] as bool
-      .._sfx = fields[1] as bool;
+      .._sfx = fields[1] as bool
+      .._form = fields[2] as int?
+      .._level = fields[3] as int?;
   }
 
   @override
   void write(BinaryWriter writer, SettingData obj) {
     writer
-      ..writeByte(2)
+      ..writeByte(4)
       ..writeByte(0)
       ..write(obj._bgm)
       ..writeByte(1)
-      ..write(obj._sfx);
+      ..write(obj._sfx)
+      ..writeByte(2)
+      ..write(obj._form)
+      ..writeByte(3)
+      ..write(obj._level);
   }
 
   @override

@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -39,55 +40,83 @@ class SettingsWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Selector<SettingData, bool>(
-                      selector: (_, settings) => settings.bgm,
-                      builder: (context, bgm, __) {
-                        return SwitchListTile(
-                          title: const Text(
-                            TranslateManager.musicText,
-                            style: TextStyle(
-                              fontSize: 30,
-                              color: Colors.white,
-                            ),
-                          ),
-                          value: bgm,
-                          onChanged: (bool value) {
-                            Provider.of<SettingData>(context, listen: false)
-                                .bgm = value;
-                            if (value) {
-                              AudioManager.instance
-                                  .startBgm(SoundManager.audio8BitPlatform);
-                            } else {
-                              AudioManager.instance.stopBgm();
-                            }
-                          },
-                        );
-                      },
+                        selector: (_, settings) => settings.bgm,
+                        builder: (context, bgm, _) {
+                          return Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const Text(
+                                TranslateManager.musicText,
+                                style: TextStyle(
+                                  fontSize: 30,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              CupertinoSwitch(
+                                value: bgm,
+                                onChanged: (bool value) {
+                                  Provider.of<SettingData>(context,
+                                          listen: false)
+                                      .bgm = value;
+                                  if (value) {
+                                    AudioManager.instance.startBgm(
+                                        SoundManager.audio8BitPlatform);
+                                  } else {
+                                    AudioManager.instance.stopBgm();
+                                  }
+                                },
+                                activeColor: CupertinoColors.opaqueSeparator,
+                              ),
+                            ],
+                          );
+                        }),
+                    const SizedBox(
+                      height: 36,
                     ),
                     Selector<SettingData, bool>(
                       selector: (_, settings) => settings.sfx,
                       builder: (context, sfx, __) {
-                        return SwitchListTile(
-                          title: const Text(
-                            TranslateManager.effectText,
-                            style: TextStyle(
-                              fontSize: 30,
-                              color: Colors.white,
+                        return Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text(
+                              TranslateManager.effectText,
+                              style: TextStyle(
+                                fontSize: 30,
+                                color: Colors.white,
+                              ),
                             ),
-                          ),
-                          value: sfx,
-                          onChanged: (bool value) {
-                            Provider.of<SettingData>(context, listen: false)
-                                .sfx = value;
-                          },
+                            CupertinoSwitch(
+                              value: sfx,
+                              onChanged: (bool value) {
+                                Provider.of<SettingData>(context, listen: false)
+                                    .sfx = value;
+                              },
+                              activeColor: CupertinoColors.opaqueSeparator,
+                            ),
+                          ],
                         );
                       },
                     ),
-                    TextButton(
+                    const SizedBox(
+                      height: 24,
+                    ),
+                    ElevatedButton(
                       onPressed: () {
                         gameRef.overlays.remove(SettingsWidget.id);
                         gameRef.overlays.add(MainMenuWidget.id);
                       },
-                      child: const Icon(Icons.arrow_back_ios_rounded),
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.white30),
+                      child: const Text(
+                        TranslateManager.backText,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 24,
+                        ),
+                      ),
                     ),
                   ],
                 ),
