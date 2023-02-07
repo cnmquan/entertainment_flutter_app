@@ -45,7 +45,7 @@ class PauseMenuWidget extends StatelessWidget {
                         selector: (_, playerData) => playerData.currentScore,
                         builder: (_, score, __) {
                           return Text(
-                            '${TranslateManager.scoreText}: $score',
+                            '${TranslateManager.scoreText} $score',
                             style: const TextStyle(
                                 fontSize: 40, color: Colors.white),
                           );
@@ -59,6 +59,9 @@ class PauseMenuWidget extends StatelessWidget {
                         gameRef.resumeEngine();
                         AudioManager.instance.resumeBgm();
                       },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white30,
+                      ),
                       child: const Text(
                         TranslateManager.resumeText,
                         style: TextStyle(
@@ -75,6 +78,9 @@ class PauseMenuWidget extends StatelessWidget {
                         gameRef.startGamePlay();
                         AudioManager.instance.resumeBgm();
                       },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white30,
+                      ),
                       child: const Text(
                         TranslateManager.restartText,
                         style: TextStyle(
@@ -90,8 +96,11 @@ class PauseMenuWidget extends StatelessWidget {
                         gameRef.reset();
                         AudioManager.instance.resumeBgm();
                       },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white30,
+                      ),
                       child: const Text(
-                        TranslateManager.exitText,
+                        TranslateManager.backText,
                         style: TextStyle(
                           fontSize: 30,
                         ),

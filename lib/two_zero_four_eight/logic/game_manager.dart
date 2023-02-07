@@ -254,7 +254,6 @@ class Game2048Manager extends StateNotifier<BoardModel> {
 
         if (tile.value == pow(2, exponent)) {
           gameWon = true;
-          break;
         }
 
         var x = i - ((i + 1) / squareSize).ceil() * squareSize - squareSize;

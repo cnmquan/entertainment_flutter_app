@@ -1,5 +1,5 @@
-import 'package:flame/game.dart';
 import 'package:flame/flame.dart';
+import 'package:flame/game.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 
@@ -61,6 +61,8 @@ class _DinoHomePageState extends State<DinoHomePage> {
             HudWidget.id: (_, DinoGame gameRef) => HudWidget(gameRef),
             GameOverWidget.id: (_, DinoGame gameRef) => GameOverWidget(gameRef),
             SettingsWidget.id: (_, DinoGame gameRef) => SettingsWidget(gameRef),
+            PlayerFormWidget.id: (_, DinoGame gameRef) =>
+                PlayerFormWidget(gameRef),
           },
           // By default MainMenu overlay will be active.
           initialActiveOverlays: const [MainMenuWidget.id],

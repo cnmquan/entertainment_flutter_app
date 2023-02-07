@@ -8,6 +8,7 @@ class ConstantManager {
   static const String mainMenuWidgetId = 'MainMenuWidget';
   static const String pauseMenuWidgetId = 'PauseMenuWidget';
   static const String settingsWidgetId = 'SettingsWidget';
+  static const String playerFormWidgetId = 'PlayerFormWidget';
 }
 
 class TranslateManager {
@@ -23,4 +24,8 @@ class TranslateManager {
   static const String resumeText = 'Resume';
   static const String musicText = 'Music';
   static const String effectText = 'Effects';
+  static const String startText = 'Start';
+  static const String chooseFormText = 'Choose Player';
+  static const String chooseLevelText = 'Choose Level';
+  static const String backText = 'Back';
 }

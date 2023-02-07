@@ -7,6 +7,8 @@ class EnemyData {
   final Vector2 textureSize;
   final double speedX;
   final bool canFly;
+  final bool canKick;
+  final bool isReverse;
 
   const EnemyData({
     required this.image,
@@ -15,5 +17,7 @@ class EnemyData {
     required this.textureSize,
     required this.speedX,
     required this.canFly,
+    required this.canKick,
+    this.isReverse = false,
   });
 }

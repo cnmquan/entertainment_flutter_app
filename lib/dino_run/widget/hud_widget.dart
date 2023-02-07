@@ -63,7 +63,8 @@ class HudWidget extends StatelessWidget {
               selector: (_, playerData) => playerData.lives,
               builder: (_, lives, __) {
                 return Row(
-                  children: List.generate(5, (index) {
+                  children: List.generate(6 - (gameRef.settingData.level ?? 1),
+                      (index) {
                     if (index < lives) {
                       return const Icon(
                         Icons.favorite,

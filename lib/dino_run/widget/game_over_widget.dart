@@ -55,11 +55,8 @@ class GameOverWidget extends StatelessWidget {
                       },
                     ),
                     ElevatedButton(
-                      child: const Text(
-                        TranslateManager.restartText,
-                        style: TextStyle(
-                          fontSize: 30,
-                        ),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white30,
                       ),
                       onPressed: () {
                         gameRef.overlays.remove(GameOverWidget.id);
@@ -69,13 +66,16 @@ class GameOverWidget extends StatelessWidget {
                         gameRef.startGamePlay();
                         AudioManager.instance.resumeBgm();
                       },
-                    ),
-                    ElevatedButton(
                       child: const Text(
-                        TranslateManager.exitText,
+                        TranslateManager.restartText,
                         style: TextStyle(
                           fontSize: 30,
                         ),
+                      ),
+                    ),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white30,
                       ),
                       onPressed: () {
                         gameRef.overlays.remove(GameOverWidget.id);
@@ -84,6 +84,12 @@ class GameOverWidget extends StatelessWidget {
                         gameRef.reset();
                         AudioManager.instance.resumeBgm();
                       },
+                      child: const Text(
+                        TranslateManager.backText,
+                        style: TextStyle(
+                          fontSize: 30,
+                        ),
+                      ),
                     ),
                   ],
                 ),
