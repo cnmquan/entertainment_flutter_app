@@ -1,27 +1,25 @@
+import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 import 'package:flame/input.dart';
 import 'package:flame/parallax.dart';
 import 'package:flame/sprite.dart';
-import 'package:flame/components.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../widgets/overlays/pause_menu.dart';
-import '../widgets/overlays/pause_button.dart';
-import '../widgets/overlays/game_over_menu.dart';
-
 import '../models/player_data.dart';
 import '../models/spaceship_details.dart';
-
-import 'enemy.dart';
-import 'health_bar.dart';
-import 'player.dart';
+import '../widgets/overlays/game_over_menu.dart';
+import '../widgets/overlays/pause_button.dart';
+import '../widgets/overlays/pause_menu.dart';
+import 'audio_player_component.dart';
 import 'bullet.dart';
 import 'command.dart';
-import 'power_ups.dart';
+import 'enemy.dart';
 import 'enemy_manager.dart';
+import 'health_bar.dart';
+import 'player.dart';
 import 'power_up_manager.dart';
-import 'audio_player_component.dart';
+import 'power_ups.dart';
 
 // This class is responsible for initializing and running the game-loop.
 class SpacescapeGame extends FlameGame
@@ -104,7 +102,7 @@ class SpacescapeGame extends FlameGame
         position: Vector2(30, size.y - 30),
         // size: 100,
         background: CircleComponent(
-          radius: 60,
+          radius: 80,
           paint: Paint()..color = Colors.white.withOpacity(0.5),
         ),
         knob: CircleComponent(radius: 30),
@@ -150,12 +148,13 @@ class SpacescapeGame extends FlameGame
       // Create text component for player score.
       _playerScore = TextComponent(
         text: 'Score: 0',
-        position: Vector2(10, 10),
+        position: Vector2(60, 10),
         textRenderer: TextPaint(
           style: const TextStyle(
             color: Colors.white,
-            fontSize: 12,
-            fontFamily: 'BungeeInline',
+            fontSize: 18,
+            fontWeight: FontWeight.w500,
+            fontFamily: 'Audiowide',
           ),
         ),
       );
@@ -168,13 +167,14 @@ class SpacescapeGame extends FlameGame
 
       // Create text component for player health.
       _playerHealth = TextComponent(
-        text: 'Health: 100%',
-        position: Vector2(size.x - 10, 10),
+        text: 'Heath: 100%',
+        position: Vector2(size.x - 20, 10),
         textRenderer: TextPaint(
           style: const TextStyle(
             color: Colors.white,
-            fontSize: 12,
-            fontFamily: 'BungeeInline',
+            fontSize: 16,
+            fontWeight: FontWeight.w500,
+            fontFamily: 'Audiowide',
           ),
         ),
       );
@@ -190,10 +190,14 @@ class SpacescapeGame extends FlameGame
       add(_playerHealth);
 
       // Add the blue bar indicating health.
+      debugPrint(
+          'Health Size: ${_playerHealth.width} - ${_playerHealth.height}');
       add(
         HealthBar(
+          size: Vector2(_playerHealth.width, _playerHealth.height),
+          scale: Vector2(1.5, 1.2),
           player: _player,
-          position: _playerHealth.positionOfAnchor(Anchor.topLeft),
+          position: Vector2(size.x - _playerHealth.width - 40, 4),
           priority: -1,
         ),
       );

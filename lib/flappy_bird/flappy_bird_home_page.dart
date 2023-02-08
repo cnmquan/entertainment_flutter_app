@@ -184,11 +184,19 @@ class _FlappyBirdHomePageState extends State<FlappyBirdHomePage> {
                       children: [
                         const Text(
                           "SCORE",
-                          style: TextStyle(color: Colors.white, fontSize: 30),
+                          style: TextStyle(
+                            color: Colors.white70,
+                            fontSize: 30,
+                            fontWeight: FontWeight.w700,
+                            fontFamily: r'Audiowide',
+                          ),
                         ),
                         Text("${score.toDouble() ~/ 100}",
                             style: const TextStyle(
-                                color: Colors.white, fontSize: 20)),
+                              color: Colors.white,
+                              fontSize: 48,
+                              fontFamily: r'Audiowide',
+                            )),
                       ],
                     ),
                   ],
@@ -236,7 +244,7 @@ class _FlappyBirdHomePageState extends State<FlappyBirdHomePage> {
       bestScore = currentScore;
     }
     pref.setInt('bestScore', bestScore);
-    print('best score is ${pref.getInt('bestScore')}');
+    debugPrint('best score is ${pref.getInt('bestScore')}');
     return bestScore;
   }
 
@@ -249,16 +257,21 @@ class _FlappyBirdHomePageState extends State<FlappyBirdHomePage> {
               future: getBestScore(score),
               builder: (context, snapshot) {
                 return AlertDialog(
-                  backgroundColor: Colors.brown,
+                  backgroundColor: Colors.brown.shade500,
                   title: Column(
                     children: [
                       const Text(
-                        "G A M E  O V E R",
+                        "GAME OVER",
                         style: TextStyle(
-                          color: Colors.white,
+                          color: Colors.white70,
+                          fontFamily: r'Audiowide',
+                          fontSize: 32,
+                          letterSpacing: 3.5,
+                          wordSpacing: 4,
+                          fontWeight: FontWeight.w700,
                         ),
                       ),
-                      Container(
+                      const SizedBox(
                         height: 20,
                       ),
                       Row(
@@ -266,33 +279,77 @@ class _FlappyBirdHomePageState extends State<FlappyBirdHomePage> {
                         children: [
                           Column(
                             children: [
-                              const Text('SCORE'),
-                              Text("${score.toDouble() ~/ 100}"),
+                              const Text(
+                                'SCORE',
+                                style: TextStyle(
+                                  color: Colors.white70,
+                                  fontFamily: r'Audiowide',
+                                  fontSize: 20,
+                                  letterSpacing: 1.5,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              Text(
+                                "${score.toDouble() ~/ 100}",
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontFamily: r'Audiowide',
+                                  fontSize: 28,
+                                  letterSpacing: 2,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
                             ],
                           ),
                           Column(
                             children: [
-                              const Text('BEST'),
+                              const Text(
+                                'BEST',
+                                style: TextStyle(
+                                  color: Colors.white70,
+                                  fontFamily: r'Audiowide',
+                                  fontSize: 24,
+                                  letterSpacing: 2,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
                               Text(
-                                  "${snapshot.data == null ? 0 : snapshot.data!.toDouble() ~/ 100}"),
+                                "${snapshot.data == null ? 0 : snapshot.data!.toDouble() ~/ 100}",
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontFamily: r'Audiowide',
+                                  fontSize: 36,
+                                  letterSpacing: 2,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
                             ],
                           ),
                         ],
                       ),
-                      Container(
+                      const SizedBox(
                         height: 20,
                       ),
                       GestureDetector(
                         onTap: resetGame,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(5),
-                          child: Container(
-                            padding: const EdgeInsets.all(7),
-                            color: Colors.white,
-                            child: const Text(
-                              "PLAY AGAIN",
-                              style: TextStyle(
-                                color: Colors.brown,
+                          child: Material(
+                            color: Colors.white.withOpacity(0.84),
+                            child: SizedBox(
+                              width: 240,
+                              height: 60,
+                              child: Center(
+                                child: Text(
+                                  "PLAY AGAIN",
+                                  style: TextStyle(
+                                    color: Colors.brown.shade500,
+                                    fontFamily: r'Audiowide',
+                                    fontSize: 24,
+                                    letterSpacing: 2,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ),
                               ),
                             ),
                           ),

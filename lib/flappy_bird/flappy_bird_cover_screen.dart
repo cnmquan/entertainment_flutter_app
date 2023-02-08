@@ -13,8 +13,15 @@ class FlappyBirdCoverScreen extends StatelessWidget {
     return Align(
       alignment: const Alignment(0, -0.5),
       child: Text(
-        gameHasStarted ? "" : "T A P  T O  P L A Y",
-        style: const TextStyle(color: Colors.white),
+        gameHasStarted ? "" : "TAP TO PLAY",
+        style: const TextStyle(
+          color: Colors.white,
+          fontFamily: r'Audiowide',
+          letterSpacing: 5,
+          wordSpacing: 8,
+          fontSize: 24,
+          fontWeight: FontWeight.w700,
+        ),
       ),
     );
   }

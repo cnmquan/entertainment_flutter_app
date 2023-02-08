@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'settings_menu.dart';
 import 'select_spaceship.dart';
+import 'settings_menu.dart';
 
 // Represents the main menu screen of Spacescape, allowing
 // players to start the game or modify in-game settings.
@@ -20,10 +20,11 @@ class SpacescapeMainMenu extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.symmetric(vertical: 50.0),
               child: Text(
-                'Spacescape',
+                r'Spacescape',
                 style: TextStyle(
                   fontSize: 50.0,
                   color: Colors.grey,
+                  fontFamily: r'Audiowide',
                   shadows: [
                     Shadow(
                       blurRadius: 20.0,
@@ -37,7 +38,8 @@ class SpacescapeMainMenu extends StatelessWidget {
 
             // Play button.
             SizedBox(
-              width: MediaQuery.of(context).size.width / 3,
+              width: MediaQuery.of(context).size.width / 2,
+              height: 60,
               child: ElevatedButton(
                 onPressed: () {
                   // Push and replace current screen (i.e MainMenu) with
@@ -48,13 +50,25 @@ class SpacescapeMainMenu extends StatelessWidget {
                     ),
                   );
                 },
-                child: const Text('Play'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.white70,
+                ),
+                child: const Text(
+                  'Play',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.white70,
+                    fontFamily: r'Audiowide',
+                  ),
+                ),
               ),
             ),
-
-            // Settings button.
+            const SizedBox(
+              height: 36,
+            ),
             SizedBox(
-              width: MediaQuery.of(context).size.width / 3,
+              width: MediaQuery.of(context).size.width / 2,
+              height: 60,
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).push(
@@ -63,7 +77,40 @@ class SpacescapeMainMenu extends StatelessWidget {
                     ),
                   );
                 },
-                child: const Text('Settings'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.white70,
+                ),
+                child: const Text(
+                  'Settings',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.white70,
+                    fontFamily: r'Audiowide',
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 36,
+            ),
+            SizedBox(
+              width: MediaQuery.of(context).size.width / 2,
+              height: 60,
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).maybePop();
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.white70,
+                ),
+                child: const Text(
+                  'Exit',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.white70,
+                    fontFamily: r'Audiowide',
+                  ),
+                ),
               ),
             ),
           ],

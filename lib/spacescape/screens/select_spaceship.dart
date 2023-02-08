@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 
 import '../models/player_data.dart';
 import '../models/spaceship_details.dart';
-
 import 'game_play.dart';
 import 'spacescape_main_menu.dart';
 
@@ -29,6 +28,7 @@ class SelectSpaceship extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 50.0,
                   color: Colors.grey,
+                  fontFamily: r'Audiowide',
                   shadows: [
                     Shadow(
                       blurRadius: 20.0,
@@ -48,13 +48,45 @@ class SelectSpaceship extends StatelessWidget {
                 return Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Text(
-                      'Ship: ${spaceship.name}',
-                      style: const TextStyle(color: Colors.white),
+                    Text.rich(
+                      TextSpan(
+                        children: <InlineSpan>[
+                          const TextSpan(
+                            text: 'Ship: ',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              color: Colors.white70,
+                              fontSize: 20,
+                            ),
+                          ),
+                          TextSpan(text: spaceship.name),
+                        ],
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontFamily: r'Audiowide',
+                          fontSize: 18,
+                        ),
+                      ),
                     ),
-                    Text(
-                      'Money: ${playerData.money}',
-                      style: const TextStyle(color: Colors.white),
+                    Text.rich(
+                      TextSpan(
+                        children: <InlineSpan>[
+                          const TextSpan(
+                            text: 'Money: ',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              color: Colors.white70,
+                              fontSize: 20,
+                            ),
+                          ),
+                          TextSpan(text: '${playerData.money}'),
+                        ],
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontFamily: r'Audiowide',
+                          fontSize: 18,
+                        ),
+                      ),
                     ),
                   ],
                 );
@@ -62,32 +94,112 @@ class SelectSpaceship extends StatelessWidget {
             ),
 
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.5,
+              height: MediaQuery.of(context).size.height * 0.4,
               child: CarouselSlider.builder(
                 itemCount: Spaceship.spaceships.length,
                 slideBuilder: (index) {
                   final spaceship =
                       Spaceship.spaceships.entries.elementAt(index).value;
-
                   return Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Image.asset(spaceship.assetPath),
-                      Text(
-                        spaceship.name,
-                        style: const TextStyle(color: Colors.white),
+                      Image.asset(
+                        spaceship.assetPath,
+                        width: 100,
+                        height: 100,
+                        fit: BoxFit.scaleDown,
                       ),
-                      Text(
-                        'Speed: ${spaceship.speed}',
-                        style: const TextStyle(color: Colors.white),
+                      Text.rich(
+                        TextSpan(
+                          children: <InlineSpan>[
+                            // const TextSpan(
+                            //   text: 'Ship: ',
+                            //   style: TextStyle(
+                            //     fontWeight: FontWeight.w700,
+                            //     color: Colors.white70,
+                            //     fontSize: 20,
+                            //   ),
+                            // ),
+                            TextSpan(text: spaceship.name),
+                          ],
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontFamily: r'Audiowide',
+                            fontSize: 18,
+                          ),
+                        ),
                       ),
-                      Text(
-                        'Level: ${spaceship.level}',
-                        style: const TextStyle(color: Colors.white),
+                      const SizedBox(
+                        height: 8,
                       ),
-                      Text(
-                        'Cost: ${spaceship.cost}',
-                        style: const TextStyle(color: Colors.white),
+                      Text.rich(
+                        TextSpan(
+                          children: <InlineSpan>[
+                            const TextSpan(
+                              text: 'Speed: ',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w700,
+                                color: Colors.white70,
+                                fontSize: 18,
+                              ),
+                            ),
+                            TextSpan(text: '${spaceship.speed.toInt()}'),
+                          ],
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontFamily: r'Audiowide',
+                            fontSize: 16,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      Text.rich(
+                        TextSpan(
+                          children: <InlineSpan>[
+                            const TextSpan(
+                              text: 'Level: ',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w700,
+                                color: Colors.white70,
+                                fontSize: 18,
+                              ),
+                            ),
+                            TextSpan(text: '${spaceship.level}'),
+                          ],
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontFamily: r'Audiowide',
+                            fontSize: 16,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      Text.rich(
+                        TextSpan(
+                          children: <InlineSpan>[
+                            const TextSpan(
+                              text: 'Cost: ',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w700,
+                                color: Colors.white70,
+                                fontSize: 18,
+                              ),
+                            ),
+                            TextSpan(text: '${spaceship.cost}'),
+                          ],
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontFamily: r'Audiowide',
+                            fontSize: 16,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 16,
                       ),
                       Consumer<PlayerData>(
                         builder: (context, playerData, child) {
@@ -97,49 +209,70 @@ class SelectSpaceship extends StatelessWidget {
                           final isOwned = playerData.isOwned(type);
                           final canBuy = playerData.canBuy(type);
 
-                          return ElevatedButton(
-                            onPressed: isEquipped
-                                ? null
-                                : () {
-                                    if (isOwned) {
-                                      playerData.equip(type);
-                                    } else {
-                                      if (canBuy) {
-                                        playerData.buy(type);
+                          return SizedBox(
+                            width: MediaQuery.of(context).size.width / 2.5,
+                            height: 48,
+                            child: ElevatedButton(
+                              onPressed: isEquipped
+                                  ? null
+                                  : () {
+                                      if (isOwned) {
+                                        playerData.equip(type);
                                       } else {
-                                        // Displays an alert if player
-                                        // does not have enough money.
-                                        showDialog(
-                                          context: context,
-                                          builder: (context) {
-                                            return AlertDialog(
-                                              backgroundColor: Colors.red,
-                                              title: const Text(
-                                                'Insufficient Balance',
-                                                textAlign: TextAlign.center,
-                                                style: const TextStyle(
-                                                  color: Colors.white,
+                                        if (canBuy) {
+                                          playerData.buy(type);
+                                        } else {
+                                          // Displays an alert if player
+                                          // does not have enough money.
+                                          showDialog(
+                                            context: context,
+                                            builder: (context) {
+                                              return AlertDialog(
+                                                backgroundColor:
+                                                    Colors.red.shade400,
+                                                title: const Text(
+                                                  'Insufficient Balance',
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                    color: Colors.white70,
+                                                    fontFamily: r'Audiowide',
+                                                    fontSize: 20,
+                                                  ),
                                                 ),
-                                              ),
-                                              content: Text(
-                                                'Need ${spaceship.cost - playerData.money} more',
-                                                textAlign: TextAlign.center,
-                                                style: const TextStyle(
-                                                    color: Colors.white),
-                                              ),
-                                            );
-                                          },
-                                        );
+                                                content: Text(
+                                                  'Need ${spaceship.cost - playerData.money} more',
+                                                  textAlign: TextAlign.center,
+                                                  style: const TextStyle(
+                                                    color: Colors.white,
+                                                    fontFamily: r'Audiowide',
+                                                    fontSize: 16,
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                          );
+                                        }
                                       }
-                                    }
-                                  },
-                            child: Text(
-                              isEquipped
-                                  ? 'Equipped'
-                                  : isOwned
-                                      ? 'Select'
-                                      : 'Buy',
-                              style: const TextStyle(color: Colors.white),
+                                    },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: isOwned
+                                    ? Colors.blue.shade500
+                                    : Colors.red.shade500,
+                              ),
+                              child: Text(
+                                isEquipped
+                                    ? 'Equipped'
+                                    : isOwned
+                                        ? 'Select'
+                                        : 'Buy',
+                                style: TextStyle(
+                                  color: isEquipped
+                                      ? Colors.green.shade500
+                                      : Colors.white,
+                                  fontFamily: r'Audiowide',
+                                  fontSize: 20,
+                                ),
+                              ),
                             ),
                           );
                         },
@@ -149,10 +282,13 @@ class SelectSpaceship extends StatelessWidget {
                 },
               ),
             ),
-
+            const SizedBox(
+              height: 24,
+            ),
             // Start button.
             SizedBox(
-              width: MediaQuery.of(context).size.width / 3,
+              width: MediaQuery.of(context).size.width / 2,
+              height: 60,
               child: ElevatedButton(
                 onPressed: () {
                   // Push and replace current screen (i.e MainMenu) with
@@ -163,13 +299,26 @@ class SelectSpaceship extends StatelessWidget {
                     ),
                   );
                 },
-                child: const Text('Start'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.white70,
+                ),
+                child: const Text(
+                  'Start',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.white70,
+                    fontFamily: r'Audiowide',
+                  ),
+                ),
               ),
             ),
-
+            const SizedBox(
+              height: 12,
+            ),
             // Back button.
             SizedBox(
-              width: MediaQuery.of(context).size.width / 3,
+              width: MediaQuery.of(context).size.width / 2,
+              height: 60,
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).pushReplacement(
@@ -178,7 +327,17 @@ class SelectSpaceship extends StatelessWidget {
                     ),
                   );
                 },
-                child: const Icon(Icons.arrow_back),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.white70,
+                ),
+                child: const Text(
+                  'Back',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.white70,
+                    fontFamily: r'Audiowide',
+                  ),
+                ),
               ),
             ),
           ],

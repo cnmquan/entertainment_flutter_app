@@ -1,13 +1,13 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 
-import 'game.dart';
-import 'enemy.dart';
-import 'player.dart';
-import 'command.dart';
-import 'enemy_manager.dart';
-import 'power_up_manager.dart';
 import 'audio_player_component.dart';
+import 'command.dart';
+import 'enemy.dart';
+import 'enemy_manager.dart';
+import 'game.dart';
+import 'player.dart';
+import 'power_up_manager.dart';
 
 // An abstract class which represents power ups in this game.
 /// See [Freeze], [Health], [MultiFire] and [Nuke] for example.
@@ -32,7 +32,7 @@ abstract class PowerUp extends SpriteComponent
   }) : super(position: position, size: size, sprite: sprite) {
     // Power ups will be displayed only for 3 seconds
     // before getting destroyed.
-    _timer = Timer(3, onTick: removeFromParent);
+    _timer = Timer(4, onTick: removeFromParent);
   }
 
   @override

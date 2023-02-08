@@ -1,18 +1,17 @@
 import 'dart:math';
 
 import 'package:flame/collisions.dart';
-import 'package:flame/particles.dart';
 import 'package:flame/components.dart';
+import 'package:flame/particles.dart';
 import 'package:flutter/material.dart';
 
-import 'game.dart';
-import 'bullet.dart';
-import 'player.dart';
-import 'command.dart';
-import 'knows_game_size.dart';
-import 'audio_player_component.dart';
-
 import '../models/enemy_data.dart';
+import 'audio_player_component.dart';
+import 'bullet.dart';
+import 'command.dart';
+import 'game.dart';
+import 'knows_game_size.dart';
+import 'player.dart';
 
 // This class represent an enemy component.
 class Enemy extends SpriteComponent
@@ -43,7 +42,7 @@ class Enemy extends SpriteComponent
       style: const TextStyle(
         color: Colors.white,
         fontSize: 12,
-        fontFamily: 'BungeeInline',
+        fontFamily: 'Audiowide',
       ),
     ),
   );

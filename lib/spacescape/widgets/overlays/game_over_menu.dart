@@ -24,7 +24,7 @@ class GameOverMenu extends StatelessWidget {
               'Game Over',
               style: TextStyle(
                 fontSize: 50.0,
-                color: Colors.black,
+                color: Colors.grey,
                 shadows: [
                   Shadow(
                     blurRadius: 20.0,
@@ -38,7 +38,8 @@ class GameOverMenu extends StatelessWidget {
 
           // Restart button.
           SizedBox(
-            width: MediaQuery.of(context).size.width / 3,
+            width: MediaQuery.of(context).size.width / 2,
+            height: 60,
             child: ElevatedButton(
               onPressed: () {
                 gameRef.overlays.remove(GameOverMenu.id);
@@ -46,13 +47,24 @@ class GameOverMenu extends StatelessWidget {
                 gameRef.reset();
                 gameRef.resumeEngine();
               },
-              child: const Text('Restart'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.white70,
+              ),
+              child: const Text(
+                'Restart',
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.white70,
+                  fontFamily: r'Audiowide',
+                ),
+              ),
             ),
           ),
 
           // Exit button.
           SizedBox(
-            width: MediaQuery.of(context).size.width / 3,
+            width: MediaQuery.of(context).size.width / 2,
+            height: 60,
             child: ElevatedButton(
               onPressed: () {
                 gameRef.overlays.remove(GameOverMenu.id);
@@ -64,7 +76,17 @@ class GameOverMenu extends StatelessWidget {
                   ),
                 );
               },
-              child: const Text('Exit'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.white70,
+              ),
+              child: const Text(
+                'Back',
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.white70,
+                  fontFamily: r'Audiowide',
+                ),
+              ),
             ),
           ),
         ],

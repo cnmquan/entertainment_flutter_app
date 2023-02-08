@@ -1,24 +1,30 @@
+import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
 class BoxWidget extends StatelessWidget {
   final double? width;
-  final double? height;
+  final double height;
   final String text;
   final VoidCallback? onPress;
   final String assetPath;
+  final String? secretText;
   const BoxWidget({
     super.key,
     this.width,
-    this.height,
+    this.height = 240,
     required this.text,
     required this.assetPath,
     this.onPress,
+    this.secretText,
   });
 
   @override
   Widget build(BuildContext context) {
+    int left =
+        Random().nextInt(MediaQuery.of(context).size.width.toInt() - 100) + 60;
+    int top = Random().nextInt(height.toInt() - 100) + 60;
     return GestureDetector(
       onTap: onPress,
       child: Container(
@@ -31,10 +37,15 @@ class BoxWidget extends StatelessWidget {
               width: width,
               height: height,
               decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(assetPath),
-                  fit: BoxFit.cover,
-                ),
+                image: assetPath.contains("http")
+                    ? DecorationImage(
+                        image: NetworkImage(assetPath),
+                        fit: BoxFit.cover,
+                      )
+                    : DecorationImage(
+                        image: AssetImage(assetPath),
+                        fit: BoxFit.cover,
+                      ),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black.withOpacity(0.3),
@@ -53,14 +64,31 @@ class BoxWidget extends StatelessWidget {
                   color: Colors.white30,
                 ),
               ),
-              child: Center(
-                child: Text(
-                  text,
-                  style: const TextStyle(
-                    fontSize: 48,
-                    color: Colors.white54,
+              child: Stack(
+                children: [
+                  if (secretText != null) ...[
+                    Positioned(
+                      top: top + 0,
+                      left: left + 0,
+                      child: Text(
+                        secretText!,
+                        style: const TextStyle(
+                          fontSize: 12,
+                          color: Colors.white30,
+                        ),
+                      ),
+                    ),
+                  ],
+                  Center(
+                    child: Text(
+                      text,
+                      style: const TextStyle(
+                        fontSize: 48,
+                        color: Colors.white54,
+                      ),
+                    ),
                   ),
-                ),
+                ],
               ),
             ),
           ),

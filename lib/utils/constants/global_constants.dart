@@ -16,4 +16,5 @@ class GlobalImageManager {
   static const String gameFlappyBirdAsset = '$_assetPath/flappy_bird_icon.png';
   static const String folderAsset = '$_assetPath/folder.jpg';
   static const String filterAsset = '$_assetPath/filter.jpg';
+  static const String richRollAsset = '$_assetPath/rickroll-roll.gif';
 }
