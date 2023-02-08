@@ -33,15 +33,6 @@ class _DinoHomePageState extends State<DinoHomePage> {
     return Theme(
       data: ThemeData(
         fontFamily: r'Audiowide',
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-        // Settings up some default theme for elevated buttons.
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-            padding: const EdgeInsets.symmetric(vertical: 10.0),
-            fixedSize: const Size(200, 60),
-          ),
-        ),
       ),
       child: Scaffold(
         body: GameWidget(

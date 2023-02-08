@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter_camera_app/global/logic/secret_controller.dart';
 import 'package:flutter_camera_app/spacescape/models/settings.dart';
 import 'package:flutter_camera_app/two_zero_four_eight/model/board_adapter_model.dart';
 import 'package:hive/hive.dart';
@@ -23,6 +24,7 @@ class GlobalFunctionManager {
     Hive.registerAdapter(SpacescapeModel.SpaceshipTypeAdapter());
     Hive.registerAdapter(SpacescapeModel.SettingsAdapter());
     Hive.registerAdapter(BoardAdapterModel());
+    Hive.registerAdapter(SecretControllerAdapter());
   }
 
   /// This function reads the stored [PlayerData] from disk.
@@ -61,5 +63,16 @@ class GlobalFunctionManager {
     }
 
     return box.get(Settings.settingsKey)!;
+  }
+
+  static Future<SecretController> getSecretValue() async {
+    final box = await Hive.openBox<SecretController>("secret");
+    final secret = box.get("secretKey");
+
+    if (secret == null) {
+      box.put("secretKey", SecretController(isAnswer: false));
+    }
+
+    return box.get("secretKey")!;
   }
 }

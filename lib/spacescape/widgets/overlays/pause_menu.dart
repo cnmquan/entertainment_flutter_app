@@ -24,7 +24,7 @@ class PauseMenu extends StatelessWidget {
               'Paused',
               style: TextStyle(
                 fontSize: 50.0,
-                color: Colors.black,
+                color: Colors.grey,
                 shadows: [
                   Shadow(
                     blurRadius: 20.0,
@@ -38,20 +38,34 @@ class PauseMenu extends StatelessWidget {
 
           // Resume button.
           SizedBox(
-            width: MediaQuery.of(context).size.width / 3,
+            width: MediaQuery.of(context).size.width / 2,
+            height: 60,
             child: ElevatedButton(
               onPressed: () {
                 gameRef.resumeEngine();
                 gameRef.overlays.remove(PauseMenu.id);
                 gameRef.overlays.add(PauseButton.id);
               },
-              child: const Text('Resume'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.white70,
+              ),
+              child: const Text(
+                'Resume',
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.white70,
+                  fontFamily: r'Audiowide',
+                ),
+              ),
             ),
           ),
-
+          const SizedBox(
+            height: 12,
+          ),
           // Restart button.
           SizedBox(
-            width: MediaQuery.of(context).size.width / 3,
+            width: MediaQuery.of(context).size.width / 2,
+            height: 60,
             child: ElevatedButton(
               onPressed: () {
                 gameRef.overlays.remove(PauseMenu.id);
@@ -59,13 +73,26 @@ class PauseMenu extends StatelessWidget {
                 gameRef.reset();
                 gameRef.resumeEngine();
               },
-              child: const Text('Restart'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.white70,
+              ),
+              child: const Text(
+                'Restart',
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.white70,
+                  fontFamily: r'Audiowide',
+                ),
+              ),
             ),
           ),
-
+          const SizedBox(
+            height: 12,
+          ),
           // Exit button.
           SizedBox(
-            width: MediaQuery.of(context).size.width / 3,
+            width: MediaQuery.of(context).size.width / 2,
+            height: 60,
             child: ElevatedButton(
               onPressed: () {
                 gameRef.overlays.remove(PauseMenu.id);
@@ -78,7 +105,17 @@ class PauseMenu extends StatelessWidget {
                   ),
                 );
               },
-              child: const Text('Exit'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.white70,
+              ),
+              child: const Text(
+                'Back',
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.white70,
+                  fontFamily: r'Audiowide',
+                ),
+              ),
             ),
           ),
         ],
