@@ -7,35 +7,43 @@ This software help you to have a great entertainment time through some mini game
 
 ## Features
 
+All Video about gameplay are in [resource folder](resource)
+
 **1. Dino Run**
 
-![<img src="resource/dinoStart.jpg" width="300px" height="200px">](resource/dinoRun.mp4)
-<img src="resource/dinoMode.jpg" width="300px" height="200px">
-<img src="resource/dinoPlay.jpg" width="300px" height="200px">
+Start|Mode|Play
+:-------------------------:|:-------------------------:|:-------------------------:|
+<img src="resource/dinoStart.jpg" width="300px" height="200px">|<img src="resource/dinoMode.jpg" width="300px" height="200px">|<img src="resource/dinoPlay.jpg" width="300px" height="200px">
 
 **2. 2048**
 
-![<img src="resource/2048play.jpg" width="100px" height="400px">](resource/2048.mp4)
-<img src="resource/2048mode.jpg" width="100px" height="400px">
+Play|Mode
+:-------------------------:|:-------------------------:|
+<img src="resource/2048play.jpg" width="200px" height="400px">|<img src="resource/2048mode.jpg" width="200px" height="400px">
 
 **3. Flappy Bird**
 
-![<img src="resource/flappyBird.jpg" width="100px" height="400px">](resource/flappybrid.mp4)
+Play|
+:-------------------------:|
+<img src="resource/flappyBird.jpg" width="200px" height="400px">|
 
 **4. SpaceScape**
 
-![<img src="resource/spacescape_start.jpg" width="100px" height="400px">](resource/spacescape.mp4)
-<img src="resource/spacescapemode.jpg" width="100px" height="400px">
-<img src="resource/spacescapeplay.jpg" width="100px" height="400px">
+Start|Mode|Play
+:-------------------------:|:-------------------------:|:-------------------------:|
+<img src="resource/spacescape_start.jpg" width="200px" height="400px">|<img src="resource/spacescapemode.jpg" width="200px" height="400px">|<img src="resource/spacescapeplay.jpg" width="200px" height="400px">
 
 **5. Mini Guess**
 
-![<img src="resource/2048mode.jpg" width="100px" height="400px">](resource/miniGuess.mp4)
+Play|
+:-------------------------:|
+<img src="resource/miniguess.jpg" width="200px" height="400px">|
 
 **6.Camera AR Filter**
 
-![<img src="resource/cameraArFilter.jpg" width="100px" height="400px">](resource/cameraAr.mp4)
-<img src="resource/cameraFilter2.jpg" width="100px" height="400px">
+Filter|Masked
+:-------------------------:|:-------------------------:|
+<img src="resource/cameraArFilter.jpg" width="200px" height="400px">|<img src="resource/cameraFilter2.jpg" width="200px" height="400px">
 
 ## Getting Started
 
