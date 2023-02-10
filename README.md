@@ -3,21 +3,39 @@
 This software help you to have a great entertainment time through some mini game that provided by us
 - **OFFLINE** - **NO ADS**
 
-![ImageApp](resource/main.jpg){width=200, height=600}
+<img src="resource/main.jpg" width="100px" height="400px">
 
 ## Features
 
-**![1. Dino Run](resource/dinoRun.mp4)**
+**1. Dino Run**
 
-**![2. 2048](resource/2048.mp4)**
+![<img src="resource/dinoStart.jpg" width="300px" height="200px">](resource/dinoRun.mp4)
+<img src="resource/dinoMode.jpg" width="300px" height="200px">
+<img src="resource/dinoPlay.jpg" width="300px" height="200px">
 
-**![3. Flappy Bird](resource/flappybrid.mp4)**
+**2. 2048**
 
-**![4. SpaceScape](resource/spacescape.mp4)**
+![<img src="resource/2048play.jpg" width="100px" height="400px">](resource/2048.mp4)
+<img src="resource/2048mode.jpg" width="100px" height="400px">
 
-**![5. Mini Guess](resource/miniGuess.mp4)**
+**3. Flappy Bird**
 
-**![6.Camera AR Filter](resource/cameraAr.mp4)**
+![<img src="resource/flappyBird.jpg" width="100px" height="400px">](resource/flappybrid.mp4)
+
+**4. SpaceScape**
+
+![<img src="resource/spacescape_start.jpg" width="100px" height="400px">](resource/spacescape.mp4)
+<img src="resource/spacescapemode.jpg" width="100px" height="400px">
+<img src="resource/spacescapeplay.jpg" width="100px" height="400px">
+
+**5. Mini Guess**
+
+![<img src="resource/2048mode.jpg" width="100px" height="400px">](resource/miniGuess.mp4)
+
+**6.Camera AR Filter**
+
+![<img src="resource/cameraArFilter.jpg" width="100px" height="400px">](resource/cameraAr.mp4)
+<img src="resource/cameraFilter2.jpg" width="100px" height="400px">
 
 ## Getting Started
 
@@ -36,10 +54,10 @@ samples, guidance on mobile development, and a full API reference.
 
 Before run app you should install [Flutter](https://docs.flutter.dev/get-started/install) and [Dart](https://dart.dev/get-dart)
 
-## Running 
+## Running
 
 You can run app with
-    
+
     flutter run
 
 ### Prerequisites
