@@ -35,7 +35,6 @@ class GameOverMenu extends StatelessWidget {
               ),
             ),
           ),
-
           // Restart button.
           SizedBox(
             width: MediaQuery.of(context).size.width / 2,
@@ -60,7 +59,9 @@ class GameOverMenu extends StatelessWidget {
               ),
             ),
           ),
-
+          const SizedBox(
+            height: 24,
+          ),
           // Exit button.
           SizedBox(
             width: MediaQuery.of(context).size.width / 2,
